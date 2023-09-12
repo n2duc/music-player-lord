@@ -78,7 +78,6 @@ body.light {
 }
 .music-lyric .lyrics {
     max-height: 100%;
-    background-color: #0f172a;
     border-radius: 4px;
     overflow-y: auto;
 }
@@ -87,7 +86,7 @@ body.light {
 }
 .music-lyric .lyrics span {
     display: block;
-    color: var(--darkwhite);
+    color: var(--lightblack);
     font-size: 14px;
     line-height: 22px;
     transition: 0.2s ease;
@@ -117,7 +116,7 @@ body.light {
     z-index: 100;
 }
 .top-bar i {
-    font-size: 30px;
+    font-size: 26px;
 }
 .top-bar span {
     font-size: 18px;

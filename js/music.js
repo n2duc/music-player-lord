@@ -54,6 +54,7 @@ copyBtn.addEventListener("click", () => {
 })
 lyricsBtn.addEventListener("click", () => {
     lyricsBox.classList.toggle("show");
+    lyricsBox.classList.contains("show") ? lyricsBtn.style.color = "var(--green)" : lyricsBtn.style.color = "var(--lightblack)";
 })
 
 
@@ -262,7 +263,6 @@ volumeBtn.addEventListener("click", () => {
     } else {
         volumeBtn.textContent = "volume_up";
         mainAudio.volume = currentVolume;
-        
         changeIconVolume(currentVolume);
     }
 })

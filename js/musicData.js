@@ -605,7 +605,7 @@ let musicList = [
             'GVR, LadyKillah AERap & GODZ',
             'SSR, SSS, FSR & GFamily',
             '95G, G5R, DCOD, Undre the hood',
-            'Tây Nguyên Sound, Harzal Lique, BCTM đang bay cao vút',
+            'Tây Nguyên Sound, EvB, BCTM đang bay cao vút',
             'Where they at?',
             'I thought you wanted beef',
             'Where they at?',
