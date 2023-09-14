@@ -45,6 +45,10 @@ body.light {
 }
 .wrapper {
     position: relative;
+    transition: all 0.3s ease;
+}
+.wrapper.expand {
+    transform: translateX(50%);
 }
 .music-lyric {
     position: absolute;
@@ -71,7 +75,7 @@ body.light {
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
-    transition: .2s linear;
+    transition: .2s ease;
 }
 .music-lyric .copy-btn:active {
     background-color: var(--slate-700);
@@ -121,6 +125,7 @@ body.light {
 .top-bar span {
     font-size: 18px;
     font-weight: 500;
+    color: var(--green);
 }
 .action_menu {
     position: absolute;
@@ -130,7 +135,7 @@ body.light {
     gap: 8px;
     padding: 10px;
     right: 0%;
-    top: 5%;
+    top: 4%;
     border-radius: 10px;
     background-color: var(--slate-900);
     transition: all 0.1s ease-in;
@@ -409,9 +414,10 @@ body.light {
 .header .row i {
     cursor: default;
 }
-.header .row span {
+.header .row .total-music-list {
     margin-left: 5px;
     font-weight: 600;
+    font-size: 16px;
 }
 .header #close {
     font-size: 22px;

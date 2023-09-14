@@ -12,6 +12,7 @@ const body = document.body,
     progressArea = document.querySelector(".progress-area"),
     musicDiscImg = document.querySelector(".img-music-disc"),
     showMoreBtn = document.getElementById("more-music"),
+    totolMusic = document.querySelector(".total-music-list"),
     closeListBtn = document.getElementById("close"),
     moreBtn = document.querySelector(".more-btn"),
     actionBtn = document.querySelector(".more_btn"),
@@ -29,10 +30,12 @@ let isMuted = false;
 window.addEventListener("load", () => {
     loadMusic(musicIndex);
     playingNow();
+    totolMusic.innerText = `Musiclist [${musicList.length} songs]`
 })
 
 actionBtn.addEventListener("click", () => {
     actionMenu.classList.toggle("show");
+    actionMenu.classList.contains("show") ? actionBtn.style.color = "var(--green)" : actionBtn.style.color = "var(--lightblack)";
 })
 darkModeBtn.addEventListener("click", () => {
     if (body.classList.contains("light")) {
@@ -51,15 +54,23 @@ const copyBtn = document.querySelector(".copy-btn")
 const textContainer = document.querySelector(".lyrics")
 copyBtn.addEventListener("click", () => {
     navigator.clipboard.writeText(textContainer.innerText);
+    copyBtn.innerText = "content_paste";
+    copyBtn.style.pointerEvents = "none";
+    setTimeout(() => {
+        copyBtn.innerText = "content_copy"
+        copyBtn.style.pointerEvents = "auto";
+    }, 1500)
 })
 lyricsBtn.addEventListener("click", () => {
     lyricsBox.classList.toggle("show");
     lyricsBox.classList.contains("show") ? lyricsBtn.style.color = "var(--green)" : lyricsBtn.style.color = "var(--lightblack)";
+    wrapper.classList.toggle("expand");
 })
 
 
 function loadMusic(indexNumb) {
     musicName.innerText = musicList[indexNumb - 1].name;
+    musicName.setAttribute("title", musicList[indexNumb - 1].name);
     musicArtist.innerText = musicList[indexNumb - 1].artist;
     mainAudio.src = `./musics/${musicList[indexNumb - 1].src}.mp3`;
     musicImg.style.backgroundImage = `url(./images/${musicList[indexNumb - 1].img}.jpg)`;
@@ -277,3 +288,10 @@ function changeIconVolume(volumeValue) {
     }
 }
 
+// Keypress Play/Pause
+window.addEventListener('keypress', (e) => {
+    if (e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault()
+        playPauseBtn.click()
+    }
+})
