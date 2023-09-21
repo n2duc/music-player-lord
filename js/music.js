@@ -25,7 +25,6 @@ const body = document.body,
     lyricsBtn = document.querySelector(".lyrics-details_btn")
 
 // let musicIndex = 1;
-// localStorage.setItem("currentMusicIndex", 1);
 let musicIndex = localStorage.getItem("currentMusicIndex");
 if (musicIndex === null) {
     musicIndex = 1;
@@ -43,15 +42,30 @@ actionBtn.addEventListener("click", () => {
     actionMenu.classList.toggle("show");
     actionMenu.classList.contains("show") ? actionBtn.style.color = "var(--green)" : actionBtn.style.color = "var(--lightblack)";
 })
+
+// localStorage.setItem("theme-music", "dark");
+function darkMode() {
+    darkModeBtn.innerText = "wb_sunny";
+    textDarkModeBtn.innerText = "Light Mode"
+    body.classList.remove("light");
+}
+function lightMode() {
+    darkModeBtn.innerText = "dark_mode";
+    textDarkModeBtn.innerText = "Dark Mode"
+    body.classList.add("light");
+}
+if (localStorage.getItem("theme-music") && localStorage.getItem("theme-music") === "dark") {
+    darkMode()
+} else if (localStorage.getItem("theme-music") === "light") {
+    lightMode()
+}
 darkModeBtn.addEventListener("click", () => {
     if (body.classList.contains("light")) {
-        darkModeBtn.innerText = "wb_sunny";
-        textDarkModeBtn.innerText = "Light Mode"
-        body.classList.remove("light");
+        darkMode()
+        localStorage.setItem("theme-music", "dark")
     } else {
-        darkModeBtn.innerText = "dark_mode";
-        textDarkModeBtn.innerText = "Dark Mode"
-        body.classList.add("light");
+        lightMode()
+        localStorage.setItem("theme-music", "light")
     }
 })
 

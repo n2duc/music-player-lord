@@ -39,9 +39,9 @@ body.light {
     --slate-100: #000000;
     --slate-500: #020617;
     --slate-700: #0f172a;
-    --slate-800: #cbd5e1;
-    --slate-900: #e2e8f0;
-    /* --slate: #ffffff; */
+    --slate-800: #efefef;
+    --slate-900: #fefefe;
+    --slate: #eeeeee;
 }
 .wrapper {
     position: relative;
@@ -71,8 +71,8 @@ body.light {
     background-color: var(--slate-800);
     color: var(--slate-100);
     font-size: 18px;
-    padding: 6px;
-    border-radius: 4px;
+    padding: 8px;
+    border-radius: 10px;
     cursor: pointer;
     user-select: none;
     transition: .2s ease;
@@ -146,10 +146,10 @@ body.light {
     padding: 8px;
     background-color: var(--slate-800);
     color: var(--green);
-    border-radius: 100rem;
+    border-radius: 10px;
     cursor: pointer;
 }
-.action_menu .dark_mode, .volume_mode {
+.action_menu .dark_mode, .volume_mode, .link_music {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -181,6 +181,9 @@ body.light {
 }
 .action_menu.show {
     right: -55%;
+}
+.action_menu .link_music a {
+    color: var(--slate-100);
 }
 .img-area {
     position: relative;
