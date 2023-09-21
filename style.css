@@ -41,7 +41,7 @@ body.light {
     --slate-700: #0f172a;
     --slate-800: #cbd5e1;
     --slate-900: #e2e8f0;
-    --slate: #ffffff;
+    /* --slate: #ffffff; */
 }
 .wrapper {
     position: relative;

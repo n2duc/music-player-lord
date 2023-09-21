@@ -24,7 +24,13 @@ const body = document.body,
     lyricsBox = document.querySelector(".music-lyric"),
     lyricsBtn = document.querySelector(".lyrics-details_btn")
 
-let musicIndex = 1;
+// let musicIndex = 1;
+// localStorage.setItem("currentMusicIndex", 1);
+let musicIndex = localStorage.getItem("currentMusicIndex");
+if (musicIndex === null) {
+    musicIndex = 1;
+    localStorage.setItem("currentMusicIndex", musicIndex);
+}
 let isMuted = false;
 
 window.addEventListener("load", () => {
@@ -73,7 +79,7 @@ function loadMusic(indexNumb) {
     musicName.setAttribute("title", musicList[indexNumb - 1].name);
     musicArtist.innerText = musicList[indexNumb - 1].artist;
     mainAudio.src = `./musics/${musicList[indexNumb - 1].src}.mp3`;
-    musicImg.style.backgroundImage = `url(./images/${musicList[indexNumb - 1].img}.jpg)`;
+    musicImg.style.backgroundImage = `url(./images/${musicList[indexNumb - 1].src}.jpg)`;
     musicDiscImg.style.backgroundImage = musicImg.style.backgroundImage;
     if (!(musicList[indexNumb - 1].lyric.length === 0)) {
         let spans = musicList[indexNumb - 1].lyric?.map((text) => `<span>${text}</span>`)
@@ -98,6 +104,7 @@ function pauseMusic() {
 function nextMusic() {
     musicIndex++;
     if (musicIndex > musicList.length) musicIndex = 1;
+    localStorage.setItem("currentMusicIndex", musicIndex);
     loadMusic(musicIndex);
     playMusic();
     playingNow();
@@ -105,6 +112,7 @@ function nextMusic() {
 function prevMusic() {
     musicIndex--;
     if (musicIndex < 1) musicIndex = musicList.length;
+    localStorage.setItem("currentMusicIndex", musicIndex);
     loadMusic(musicIndex);
     playMusic();
     playingNow();
@@ -180,6 +188,7 @@ mainAudio.addEventListener("ended", () => {
             break;
         case "repeat_one":
             mainAudio.currentTime = 0;
+            localStorage.setItem("currentMusicIndex", musicIndex);
             loadMusic(musicIndex);
             playMusic();
             break;
@@ -189,6 +198,7 @@ mainAudio.addEventListener("ended", () => {
                 randIndex = Math.floor((Math.random() * musicList.length) + 1);
             } while(musicIndex == randIndex)
             musicIndex = randIndex;
+            localStorage.setItem("currentMusicIndex", musicIndex);
             loadMusic(musicIndex);
             playMusic();
             playingNow();
@@ -251,6 +261,7 @@ function playingNow() {
 function clicked(element) {
     let getLiIndex = element.getAttribute("li-index");
     musicIndex = getLiIndex;
+    localStorage.setItem("currentMusicIndex", musicIndex);
     loadMusic(musicIndex);
     playMusic();
     playingNow();
